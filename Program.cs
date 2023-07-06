@@ -121,22 +121,21 @@ void Print2DArray(int[,] array)
 
 int MinSum(int[,] array)
 {
+    int j = 0;
     int sum = 0;
     int res = 0;
-    int j = 0; 
+    for (j = 0; j < array.GetLength(1); j++)
+        {
         for (int i = 0; i < array.GetLength(0); i++)       
-            {
-                for (j < array.GetLength(1); j++)
-                {
-                    sum += array[i, j];
-                    if (sum < res)
-                        {
-                        res = sum;
-                        continue;
-                        }
+            {             
+                sum += array[i, j];
+                if (sum < res)
+                    {
+                    res = sum;
+                    }
                 }
-            }
-    return j;
+        }
+    return j;    
 }
 
 int rows = InputNum("Введите количество строк: ");
@@ -148,7 +147,7 @@ Fill2DArray(myArray, minValue, maxValue);
 Print2DArray(myArray);
 MinSum(myArray);
 int x = MinSum(myArray);
-Console.WriteLine($"Номер строки cнаименьшей суммой элементов: {x} строка");
+Console.WriteLine($"Номер строки c наименьшей суммой элементов: {x} строка");
 
 /*
 Задача 58: 
