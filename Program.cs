@@ -87,7 +87,9 @@ ________________________________________________________________________________
 5 2 6 7
 Программа считает сумму элементов в каждой строке
 и выдаёт номер строки с наименьшей суммой элементов: 1 строка
+
 */
+
 int InputNum(string message)
 {
     Console.Write(message);
@@ -117,20 +119,26 @@ void Print2DArray(int[,] array)
     }
 }
 
-void MinSum(int[,] array)
+int MinSum(int[,] array)
 {
     int sum = 0;
     int res = 0;
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int j = 0; j < array.GetLength(1); j++)
-        sum += array[i, j];
-        sum += sum;
-        res = index[i,j];
-    }
-    return res;
+    int j = 0; 
+        for (int i = 0; i < array.GetLength(0); i++)       
+            {
+                for (j < array.GetLength(1); j++)
+                {
+                    sum += array[i, j];
+                    if (sum < res)
+                        {
+                        res = sum;
+                        continue;
+                        }
+                }
+            }
+    return j;
 }
-    
+
 int rows = InputNum("Введите количество строк: ");
 int cols = InputNum("Введите количество столбцов: ");
 int minValue = InputNum("Введите минимальное значение элемента: ");
@@ -138,10 +146,9 @@ int maxValue = InputNum("Введите максимальное значени�
 int[,] myArray = Create2DArray(rows, cols);
 Fill2DArray(myArray, minValue, maxValue);
 Print2DArray(myArray);
-Console.WriteLine();
-DescendingOrder(myArray);
-int[,] resultArray = MinSum(myArray);
-Console.WriteLine($"Номер строки cнаименьшей суммой элементов: {res} строка");
+MinSum(myArray);
+int x = MinSum(myArray);
+Console.WriteLine($"Номер строки cнаименьшей суммой элементов: {x} строка");
 
 /*
 Задача 58: 
@@ -189,6 +196,7 @@ c12 = a11·b12 + a12·b22 = 4·1 + 2·4 = 4 + 8 = 12
 c21 = a21·b11 + a22·b21 = 9·3 + 0·(-3) = 27 + 0 = 27
 
 c22 = a21·b12 + a22·b22 = 9·1 + 0·4 = 9 + 0 = 9
+
 
 int InputNum(string message)
 {
@@ -249,6 +257,7 @@ Console.WriteLine();
 CompositionMatrix(myArray);
 Print2DArray(myArray);
 
+/*
 
 Задача 60
 __________
