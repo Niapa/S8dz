@@ -12,17 +12,19 @@ ________________________________________________________________________________
 7 4 2 1
 9 5 3 2
 8 4 4 2
-*/
+________________________________________________________________________________
 
 int InputNum(string message)
 {
     Console.Write(message);
     return int.Parse(Console.ReadLine()!);
 }
+
 int[,] Create2DArray(int rows, int columns)
 {
     return new int[rows, columns];
 }
+
 void Fill2DArray(int[,] array, int min, int max)
 {
     Random rnd = new Random();
@@ -30,6 +32,7 @@ void Fill2DArray(int[,] array, int min, int max)
         for (int j = 0; j < array.GetLength(1); j++)
             array[i, j] = rnd.Next(min, max + 1);
 }
+
 void Print2DArray(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
@@ -39,27 +42,25 @@ void Print2DArray(int[,] array)
         Console.WriteLine();
     }
 }
+
 void DescendingOrder(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            for (int k = 0; k < array.GetLength(1); k++)
-            {
-                if (array[i, j] < array[i, k])
+            for (int k = 0; k < array.GetLength(1) - 1; k++)
+            {   
+                if (array[i, k] < array[i, k + 1])
                 {
-                    int temp = array[i, k];
-                    array[i, k] = array[i, k];
+                    int temp = array[i, k + 1];
+                    array[i, k + 1] = array[i, k];
                     array[i, k] = temp;
-                    //нужно распечатать или перезаписать
                 }
             }
         }
     }
-    return array[]
 }
-
     
 int rows = InputNum("Введите количество строк: ");
 int cols = InputNum("Введите количество столбцов: ");
@@ -70,14 +71,14 @@ Fill2DArray(myArray, minValue, maxValue);
 Print2DArray(myArray);
 Console.WriteLine();
 DescendingOrder(myArray);
+Print2DArray(myArray);
 
-/*
 Задача 56:
 __________
 Задайте прямоугольный двумерный массив. 
 Напишите программу, которая будет находить строку
 с наименьшей суммой элементов.
-_________________________________________________________
+________________________________________________________________________________
 
 Например, задан массив:
 1 4 7 2
@@ -86,7 +87,7 @@ _________________________________________________________
 5 2 6 7
 Программа считает сумму элементов в каждой строке
 и выдаёт номер строки с наименьшей суммой элементов: 1 строка
-
+*/
 int InputNum(string message)
 {
     Console.Write(message);
