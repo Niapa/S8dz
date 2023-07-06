@@ -272,7 +272,7 @@ __________
 добавляя индексы каждого элемента.
 _________________________________________________________________________
 Массив размером 2 x 2 x 2
-66(0,0,0) 25(0,1,0)
+ 25(0,1,0)
 34(1,0,0) 41(1,1,0)
 27(0,0,1) 90(0,1,1)
 26(1,0,1) 55(1,1,1)
@@ -285,40 +285,42 @@ int InputNum(string message)
     return int.Parse(Console.ReadLine()!);
 }
 
-int[,] Create3DArray(int rows, int columns, int  depth)
+int[,,] Create3DArray(int rows, int columns, int depth)
 {
-    return new int[rows, columns];
+    return new int[rows, columns, depth];
 }
 
-void Fill2DArray(int[,] array, int min, int max)
+void Fill3DArray(int[,,] array, int min, int max)
 {
     Random rnd = new Random();
     for (int i = 0; i < array.GetLength(0); i++)
         for (int j = 0; j < array.GetLength(1); j++)
-            array[i, j] = rnd.Next(min, max + 1);
+            for (int k = 0; k < array.GetLength(1); k++)
+                array[i, j, k] = rnd.Next(min, max + 1);
 }
 
-void Print3DArray(int[,] array)
+void Print3DArray(int[,,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
-            Console.Write($"{array[i, j]}\t");
-        Console.WriteLine();
+            for (int k = 0; k < array.GetLength(1); k++)
+                {
+                Console.WriteLine($"{array[i, j, k]}({i},{j},{k})\t"); //66(0,0,0)
+                }
     }
 }
 
-int rows = InputNum("Введите количество строк: ");
-int cols = InputNum("Введите количество столбцов: ");
+int height = InputNum("Введите количество строк по оси X: ");
+int width = InputNum("Введите количество строк по оси Y: ");
+int thickness = InputNum("Введите количество строк по оси Z: ");
 int minValue = InputNum("Введите минимальное значение элемента: ");
 int maxValue = InputNum("Введите максимальное значение элемента: ");
 
-int[,] myArray = Create2DArray(rows, cols);
-Fill2DArray(myArray, minValue, maxValue);
-Print2DArray(myArray);
-Console.WriteLine();
-ChangeRowsCols(myArray);
-Print3DArray(myArray);
+int[,,] my3DArray = Create3DArray(height, width, thickness);
+Fill3DArray(my3DArray, minValue, maxValue);
+Print3DArray(my3DArray);
+
 
 
 
