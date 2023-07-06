@@ -12,6 +12,7 @@ ________________________________________________________________________________
 7 4 2 1
 9 5 3 2
 8 4 4 2
+*/
 
 int InputNum(string message)
 {
@@ -51,10 +52,12 @@ void DescendingOrder(int[,] array)
                     int temp = array[i, k];
                     array[i, k] = array[i, k];
                     array[i, k] = temp;
+                    //нужно распечатать или перезаписать
                 }
             }
         }
     }
+    return array[]
 }
 
     
@@ -67,9 +70,8 @@ Fill2DArray(myArray, minValue, maxValue);
 Print2DArray(myArray);
 Console.WriteLine();
 DescendingOrder(myArray);
-[,] resultArray = DescendingOrder(myArray);
-Print2DArray(resultArray);
 
+/*
 Задача 56:
 __________
 Задайте прямоугольный двумерный массив. 
@@ -137,9 +139,10 @@ Fill2DArray(myArray, minValue, maxValue);
 Print2DArray(myArray);
 Console.WriteLine();
 DescendingOrder(myArray);
-[,] resultArray = MinSum(myArray);
-Console.WriteLine($"Номер строки с наименьшей суммой элементов: {res} строка");
+int[,] resultArray = MinSum(myArray);
+Console.WriteLine($"Номер строки cнаименьшей суммой элементов: {res} строка");
 
+/*
 Задача 58: 
 __________
 Задайте две матрицы. Напишите программу, которая 
@@ -259,7 +262,6 @@ _________________________________________________________________________
 26(1,0,1) 55(1,1,1)
 
 
-
 int InputNum(string message)
 {
     Console.WriteLine(message);
@@ -302,6 +304,7 @@ int[,,] my3DArray = Create3DArray(height, width, thickness);
 Fill3DArray(my3DArray, minValue, maxValue);
 Print3DArray(my3DArray);
 
+
 Задача 62.
 ___________
 Напишите программу, которая заполнит спирально массив 4 на 4.
@@ -325,72 +328,49 @@ void Fill2DArray(int[,] array, int min, int max)
             diff++;
             }
 }
-*/
 
-int InputNum(string message)
-{
-    Console.WriteLine(message);
-    return int.Parse(Console.ReadLine()!);
-}
 
-int[,] Create2DArray(int rows, int columns)
+void FillSpiralArray (int[,] array)
 {
-    columns = rows;
-    return new int[rows, columns];
-}
-
-void Fill2DArray(int[,] array, int min, int max)
-{
+    int temp = 1;
     int i = 0;
     int j = 0;
-    int diff = 0;
-    int n = 0;
-    while (array[i,j] != i * i)
+
+    while (temp <= array.GetLength(0) * array.GetLength(1))
         {
-        for (i < ((array.GetLength(0))-n-1); i++)
-            {array[i, j] = 1 + diff;
-            diff++;
-            } 
-        for (i == (array.GetLength(0))-n-1; j < (array.GetLength(1))-n-1; j++)
-            {
-            array[i, j] = 1 + diff;
-            diff++;
-            }
-            for (i > (n - 0); i--)
-                {
-                array[i, j] = 1 + diff;
-                diff++;
-                }
-                for (j > (n-0); j--)
-                {
-                    array[i, j] = 1 + diff;
-                    diff++;
-                    }
-            n++;
+            array[i, j] = temp;
+            temp++;
+            if (i <= j + 1 && i + j < array.GetLength(1) - 1)
+                j++;
+                else if (i < j && i + j >= array.GetLength(0) - 1)
+                    i++;
+                    else if (i >= j && i + j > array.GetLength(1) - 1)
+                        j--;
+                            else
+                                i--;
         }
 }
 
-void Print2DArray(int[,] array)
+void PrintArray (int[,] array)
 {
-    for (int i = 0; i < array.GetLength(0); i++)
+  for (int i = 0; i < array.GetLength(0); i++)
+  {
+    for (int j = 0; j < array.GetLength(1); j++)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
-            Console.Write($"{array[i, j]}\t");
-        Console.WriteLine();
+      if (array[i,j] / 10 <= 0)
+      Console.Write($"0{array[i,j]} ");
+
+      else Console.Write($"{array[i,j]} ");
     }
+    Console.WriteLine();
+  }
 }
+  
+int i = 4;
+int[,] myArray = new int[i, i];
+FillSpiralArray(myArray); 
+PrintArray(myArray);
 
-int rows = InputNum("Введите длину стороны квадратной матрицы: ");
-int minValue = InputNum("Введите минимальное значение элемента: ");
-int maxValue = InputNum("Введите максимальное значение элемента: ");
-
-int[,] myArray = Create2DArray(rows, cols);
-Fill2DArray(myArray, minValue, maxValue);
-Print2DArray(myArray);
-
-
-
-
-
+*/
 
 
