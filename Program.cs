@@ -311,6 +311,20 @@ _____________________________________________________________
 12 13 14 05
 11 16 15 06
 10 09 08 07
+заполнение массива числами от 1 по порядку:
+void Fill2DArray(int[,] array, int min, int max)
+{
+    int diff = 0;
+    for (int i = 0; i < array.GetLength(0); i++)
+        {array[i, j] = 1 + diff;
+        diff++;
+         } continue;
+        for (int j = 0; j < array.GetLength(1); j++)
+            {
+            array[i, j] = 1 + diff;
+            diff++;
+            }
+}
 */
 
 int InputNum(string message)
@@ -327,16 +341,33 @@ int[,] Create2DArray(int rows, int columns)
 
 void Fill2DArray(int[,] array, int min, int max)
 {
+    int i = 0;
+    int j = 0;
     int diff = 0;
-    for (int i = 0; i < array.GetLength(0); i++)
-        {array[i, j] = 1 + diff;
-        diff++;
-         } continue;
-        for (int j = 0; j < array.GetLength(1); j++)
+    int n = 0;
+    while (array[i,j] != i * i)
+        {
+        for (i < ((array.GetLength(0))-n-1); i++)
+            {array[i, j] = 1 + diff;
+            diff++;
+            } 
+        for (i == (array.GetLength(0))-n-1; j < (array.GetLength(1))-n-1; j++)
             {
             array[i, j] = 1 + diff;
             diff++;
             }
+            for (i > (n - 0); i--)
+                {
+                array[i, j] = 1 + diff;
+                diff++;
+                }
+                for (j > (n-0); j--)
+                {
+                    array[i, j] = 1 + diff;
+                    diff++;
+                    }
+            n++;
+        }
 }
 
 void Print2DArray(int[,] array)
@@ -356,6 +387,9 @@ int maxValue = InputNum("Введите максимальное значени�
 int[,] myArray = Create2DArray(rows, cols);
 Fill2DArray(myArray, minValue, maxValue);
 Print2DArray(myArray);
+
+
+
 
 
 
