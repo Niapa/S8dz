@@ -1,23 +1,4 @@
 ﻿/*
-
-
-
-Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. 
-Напишите программу, которая будет построчно выводить массив, 
-добавляя индексы каждого элемента.
-Массив размером 2 x 2 x 2
-66(0,0,0) 25(0,1,0)
-34(1,0,0) 41(1,1,0)
-27(0,0,1) 90(0,1,1)
-26(1,0,1) 55(1,1,1)
-
-Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
-Например, на выходе получается вот такой массив:
-01 02 03 04
-12 13 14 05
-11 16 15 06
-10 09 08 07
-
 Задача 54:
 __________
 Задайте двумерный массив. Напишите программу, 
@@ -277,7 +258,7 @@ _________________________________________________________________________
 27(0,0,1) 90(0,1,1)
 26(1,0,1) 55(1,1,1)
 
-*/
+
 
 int InputNum(string message)
 {
@@ -306,7 +287,7 @@ void Print3DArray(int[,,] array)
         for (int j = 0; j < array.GetLength(1); j++)
             for (int k = 0; k < array.GetLength(1); k++)
                 {
-                Console.WriteLine($"{array[i, j, k]}({i},{j},{k})\t"); //66(0,0,0)
+                Console.WriteLine($"{array[i, j, k]}({i},{j},{k})\t"); 
                 }
     }
 }
@@ -321,6 +302,60 @@ int[,,] my3DArray = Create3DArray(height, width, thickness);
 Fill3DArray(my3DArray, minValue, maxValue);
 Print3DArray(my3DArray);
 
+Задача 62.
+___________
+Напишите программу, которая заполнит спирально массив 4 на 4.
+_____________________________________________________________
+Например, на выходе получается вот такой массив:
+01 02 03 04
+12 13 14 05
+11 16 15 06
+10 09 08 07
+*/
+
+int InputNum(string message)
+{
+    Console.WriteLine(message);
+    return int.Parse(Console.ReadLine()!);
+}
+
+int[,] Create2DArray(int rows, int columns)
+{
+    columns = rows;
+    return new int[rows, columns];
+}
+
+void Fill2DArray(int[,] array, int min, int max)
+{
+    int diff = 0;
+    for (int i = 0; i < array.GetLength(0); i++)
+        {array[i, j] = 1 + diff;
+        diff++;
+         } continue;
+        for (int j = 0; j < array.GetLength(1); j++)
+            {
+            array[i, j] = 1 + diff;
+            diff++;
+            }
+}
+
+void Print2DArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+            Console.Write($"{array[i, j]}\t");
+        Console.WriteLine();
+    }
+}
+
+int rows = InputNum("Введите длину стороны квадратной матрицы: ");
+int minValue = InputNum("Введите минимальное значение элемента: ");
+int maxValue = InputNum("Введите максимальное значение элемента: ");
+
+int[,] myArray = Create2DArray(rows, cols);
+Fill2DArray(myArray, minValue, maxValue);
+Print2DArray(myArray);
 
 
 
